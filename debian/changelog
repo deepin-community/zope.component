@@ -1,5 +1,317 @@
-template-repository (1.0-1) unstable; urgency=medium
+zope.component (5.1.0-1) unstable; urgency=medium
 
-  * Initial release
+  * New upstream release.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Colin Watson <cjwatson@debian.org>  Sun, 08 Jan 2023 22:02:34 +0000
+
+zope.component (5.0.1-3) unstable; urgency=medium
+
+  * Set Vcs-* fields.
+  * Remove duplicate call to dh_installchangelogs.
+
+ -- Colin Watson <cjwatson@debian.org>  Thu, 22 Dec 2022 17:03:28 +0000
+
+zope.component (5.0.1-2) unstable; urgency=medium
+
+  * Switch Maintainer to the Debian Python Team (closes: #948805).
+  * Drop unnecessary manual dependency on python3-zope.hookable; dh-python
+    will figure this out for itself.
+  * Policy version 4.6.2.
+
+ -- Colin Watson <cjwatson@debian.org>  Tue, 20 Dec 2022 01:26:16 +0000
+
+zope.component (5.0.1-1) unstable; urgency=medium
+
+  * QA upload.
+  * New upstream release.
+  * Drop explicit-test-requires.patch, no longer needed.
+  * Test package with zope.testrunner.
+  * Drop d/compat, use debhelper-compat instead.
+  * d/control:
+    - Add python3-zope.testing and python3-zope.testrunner as
+      build dependencies.
+    - Update Standards-Version to 4.6.1
+    - Bump debhelper to version 13.
+    - Change homepage, point to GitHub.
+    - Update version requirement on python3-zope.interface
+    - Document Rules-Requires-Root.
+    - Change priority, extra -> optional.
+  * autopkgtest:
+    - Add upstream unittests as autopkgtest.
+    - Remove autopkgtest-pkg-control, no longer needed.
+  * d/copyright:
+    - Remove Files-Excluded section, files is no longer included.
+    - Update copyright years.
+    - Update and change to secure URI, still points to PyPI.
+  * d/watch:
+    - Bump to version 4.
+    - Change to secure URI.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+ -- Håvard F. Aasen <havard.f.aasen@pfft.no>  Sat, 02 Jul 2022 18:39:33 +0200
+
+zope.component (4.3.0-3) unstable; urgency=medium
+
+  * Replace custom autopkgtest with autodep8
+
+ -- Paul Gevers <elbrus@debian.org>  Sat, 21 Sep 2019 14:28:11 +0200
+
+zope.component (4.3.0-2) unstable; urgency=medium
+
+  * QA upload.
+  * Orphan the package. Closes: #869452.
+  * Stop building the Python2 packages. Closes: #938898.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 05 Sep 2019 08:09:24 +0200
+
+zope.component (4.3.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * d/control:
+    - Minimum upstream Python versions are 2.7 and 3.3.
+    - Minimum zope.interface compatible version is 4.1.0. (Closes: #807920)
+    - Bump Standards-Version to 3.9.8 with no other changes needed.
+    - wrap-and-sort
+
+ -- Barry Warsaw <barry@debian.org>  Tue, 30 Aug 2016 16:39:57 -0400
+
+zope.component (4.2.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * d/control:
+    - Restore virtual package python-zope.component-hook.
+    - Bump Standards-Version with no other changes necessary.
+  * d/watch: Use pypi.debian.net redirector.
+
+ -- Barry Warsaw <barry@debian.org>  Tue, 09 Jun 2015 11:51:56 -0400
+
+zope.component (4.2.1-2) unstable; urgency=medium
+
+  * d/rules: Re-enable build time test suite.  (Closes: #752723)
+  * d/control: Update Build-Depends.
+  * d/tests:
+    - Just test that the module can be imported.
+    - Added Python 3 DEP-8 test.
+
+ -- Barry Warsaw <barry@debian.org>  Tue, 01 Jul 2014 13:16:20 -0400
+
+zope.component (4.2.1-1) unstable; urgency=low
+
+  * Team upload.
+
+  [ Gediminas Paulauskas ]
+  * Added support for Python 3.
+  * Add python-zope.component-persistentregistry and -security metapackages.
+  * debian/rules:
+    - Exclude the new docs and testing extras.
+    - Install upstream changelog.
+  * debian/control:
+    - Bump X-Python-Version to 2.6
+    - Removed conflict with zope3.
+
+  [ Barry Warsaw ]
+  * New upstream release.  (Closes: #706214)
+  * d/compat: Bump version to 9.
+  * d/control:
+    - Update Build-Depends.
+    - Add myself to Uploaders.
+    - Bump Standards-Version to 3.9.5 with no other changes necessary.
+    - Added X-Python3-Version header.
+    - Added python3-zope.component binary package.
+    - wrap-and-sort
+  * d/copyright:
+    - Updated Format for copyright-format/1.0
+    - Added Files-Excluded header to prune pre-built Sphinx artifacts in
+      docs/_build from the original tarball.
+  * d/python-zope.component.install: Removed.
+  * d/rules Convert to --buildsystem=pybuild and add dh_python3.
+  * d/patches/explicit-test-requires.patch: Added, to prevent unwanted
+    download attempts from PyPI during package build.
+  * d/python-zope.component-persistentregistry.lintian-overrides,
+    d/python-zope.component-security.lintian-overrides: Added.
+
+ -- Barry Warsaw <barry@debian.org>  Wed, 25 Jun 2014 18:03:38 -0400
+
+zope.component (3.11.0-1) unstable; urgency=low
+
+  * Team upload.
+
+  [ Gediminas Paulauskas ]
+  * New upstream release.
+    - moved code from zope.component.registry and related interfaces to
+      zope.interface 3.8.0
+  * debian/control:
+    - bump Standards-Version to 3.9.4
+    - enable autopkgtest (Closes: #692695)
+  * debian/tests: switch to zope.testrunner
+
+  [ Arnaud Fontaine ]
+  * debian/control:
+    - Use canonical URI for Vcs-Svn.
+
+ -- Gediminas Paulauskas <menesis@pov.lt>  Fri, 24 May 2013 23:02:53 +0300
+
+zope.component (3.10.0-3) unstable; urgency=low
+
+  * Team upload.
+  * debian/rules:
+    + Remove setuptools from requires.txt as it is not handled by
+      dh_pydeb. Closes: #684560.
+
+ -- Arnaud Fontaine <arnau@debian.org>  Fri, 28 Sep 2012 10:59:36 +0900
+
+zope.component (3.10.0-2) unstable; urgency=low
+
+  * Team upload.
+  * Use debian/source/options to ignore changes in egg-info directory
+    rather than debian/clean otherwise zcml and txt files are missing.
+
+ -- Arnaud Fontaine <arnau@debian.org>  Tue, 08 Nov 2011 22:00:18 +0900
+
+zope.component (3.10.0-1) unstable; urgency=low
+
+  * Team upload.
+
+  [ Arnaud Fontaine ]
+  * debian/control: add Vcs-Browser and Homepage fields.
+  * Add debian/clean to get rid of egg-info/* to prevent FTBFS if
+    built twice.
+
+  [ Gediminas Paulauskas ]
+  * New upstream release.
+  * debian/rules: remove docs extra, add security extra to suggests.
+  * Use dh_python2 instead of deprecated python-central. (Closes: #617161)
+  * Switch to 3.0 (quilt) source format.
+  * debian/control: remove ${python:Provides}, unwanted.
+  * debian/copyright: update for dep5 changes.
+  * debian/*.lintian-overrides: add
+    - extra packages are expected to be empty.
+    - section should be zope.
+
+ -- Arnaud Fontaine <arnau@debian.org>  Wed, 19 Oct 2011 12:04:35 +0900
+
+zope.component (3.9.5-0ubuntu2) natty; urgency=low
+
+  * Add python-zope.component-test metapackage because some zope packages
+    depend on it for testing.
+  * Update Standards-Version to 3.9.1, reduce Build-Depends from python-all-dev
+    to python-all.
+  * debian/copyright: convert to dep5 format.
+
+ -- Gediminas Paulauskas <menesis@pov.lt>  Mon, 29 Nov 2010 17:33:12 +0200
+
+zope.component (3.9.5-0ubuntu1) maverick; urgency=low
+
+  * New upstream release.
+
+ -- Gediminas Paulauskas <menesis@pov.lt>  Mon, 23 Aug 2010 20:23:19 +0300
+
+zope.component (3.9.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed, 03 Feb 2010 07:35:49 +0100
+
+zope.component (3.8.0-2) unstable; urgency=low
+
+  * Depend on hook extra directly. The hook extra is an optimization and it
+    seems pointless to not always have it present in Debian. This also makes
+    us Provide: python-zope.component-hook which is required for
+    efforts in ubuntu to package zope.app.component.
+
+ -- Brian Sutherland <brian@vanguardistas.net>  Thu, 28 Jan 2010 03:00:47 +0100
+
+zope.component (3.8.0-1) unstable; urgency=low
+
+  [ Brian Sutherland ]
+  * Convert to debhelper 7 and the pydeb dh7 extension.
+  * Move persistentregistry extra to Suggests:*
+
+  [ Fabio Tranchitella ]
+  * New upstream release.
+  * debian/tests/control: add missing test dependencies.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed, 30 Dec 2009 19:19:27 +0100
+
+zope.component (3.7.1-5) unstable; urgency=low
+
+  * debian/control: build-depend on python-van.pydeb >= 1.3.0-2.
+    (Closes: #552931)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 08 Nov 2009 11:03:22 +0100
+
+zope.component (3.7.1-4) unstable; urgency=low
+
+  [ Matthias Klose ]
+  * Set section to zope.
+
+  [ Fabio Tranchitella ]
+  * debian/control: improved the long descriptions. (Closes: #548644)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon, 28 Sep 2009 06:17:44 +0200
+
+zope.component (3.7.1-3) unstable; urgency=low
+
+  * Rebuild against van.pydeb 1.3.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 12 Sep 2009 20:15:57 +0200
+
+zope.component (3.7.1-2) unstable; urgency=low
+
+  * debian/rules: fixed a typo which resulted in wrong dependencies.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sat, 29 Aug 2009 16:32:40 +0200
+
+zope.component (3.7.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Standards-Version: 3.8.3, no changed required.
+  * debian/rules: fixed FTBFS with Python 2.6. (Closes: #543232)
+  * debian/control: added conflict with zope3.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Fri, 28 Aug 2009 11:00:47 +0200
+
+zope.component (3.7.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Change source package name
+  * Build with python-van.pydeb
+  * Standards version to 3.8.0
+  * Run with all python versions
+  * Add python-zope.component-zcml metapackage for zcml extra
+  * Add copyright
+
+ -- Brian Sutherland <brian@vanguardistas.net>  Mon, 25 May 2009 21:52:25 +0200
+
+python-zope.component (3.4.0-1ubuntu2.2) lenny; urgency=low
+
+  * Non-maintainer upload.
+  * Rebuild for lenny
+
+ -- Brian Sutherland <brian@vanguardistas.net>  Fri, 08 May 2009 11:04:10 +0000
+
+python-zope.component (3.4.0-1ubuntu2.1) etch-devel; urgency=low
+
+  * Non-maintainer upload.
+  * Rebuild for etch-devel
+
+ -- Brian Sutherland <brian@vanguardistas.net>  Wed, 23 Jul 2008 09:29:34 +0200
+
+python-zope.component (3.4.0-1ubuntu2) hardy; urgency=low
+
+  * Re-build for hardy
+
+ -- Ignas Mikalajunas <ignas.mikalajunas@gmail.com>  Wed, 23 Apr 2008 11:18:52 +0300
+
+python-zope.component (3.4.0-1ubuntu1) gutsy; urgency=low
+
+  * Added zope.hookable to the list of dependencies
+
+ -- Ignas Mikalajunas <ignas.mikalajunas@gmail.com>  Wed, 16 Apr 2008 17:49:08 +0300
+
+python-zope.component (3.4.0-1) gutsy; urgency=low
+
+  * Inital Release
+
+ -- Brian Sutherland <brian@vanguardistas.net>  Thu,  8 Nov 2007 19:27:48 +0100
